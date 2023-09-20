@@ -1,0 +1,36 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "gcp-build": "gcloud builds submit --region=us-central1 --tag us-central1-docker.pkg.dev/supanuxtphile-399200/supanuxtphile/supanuxtphile",
+    "gcp-deploy": "gcloud run deploy supanuxtphile --image=us-central1-docker.pkg.dev/supanuxtphile-399200/supanuxtphile/supanuxtphile",
+    "gcp-replace": "cd _cloud_run && gcloud run services replace supanuxtphile-service.yaml"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/ui": "^2.8.1",
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
+    "@types/node": "^18",
+    "graphile-export": "0.0.2-beta.1",
+    "kysely": "^0.26.1",
+    "kysely-codegen": "^0.10.1",
+    "nuxt": "3.7.0",
+    "nuxt3-leaflet": "^1.0.12",
+    "sass": "^1.66.1"
+  },
+  "dependencies": {
+    "@graphile/simplify-inflection": "8.0.0-beta.1",
+    "@nuxtjs/supabase": "^1.1.0",
+    "@pinia/nuxt": "^0.4.11",
+    "graphile-utils": "5.0.0-beta.7",
+    "nuxt-graphql-client": "^0.2.30",
+    "pg": "^8.11.3",
+    "pinia": "^2.1.6",
+    "postgraphile": "5.0.0-beta.7"
+  }
+}

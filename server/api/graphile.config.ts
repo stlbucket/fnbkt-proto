@@ -77,7 +77,7 @@ const preset: GraphileConfig.Preset = {
     graphiql: true,
     graphqlPath: "/api/graphql",
     // eventStreamPath: "/api/graphql/stream",
-    graphiqlPath: "/graphiql",
+    graphiqlPath: "/api/graphiql",
     graphiqlOnGraphQLGET: true,
     // websockets: true,
     // watch: true,

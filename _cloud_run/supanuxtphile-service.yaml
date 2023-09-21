@@ -57,6 +57,11 @@ spec:
           value: https://supanuxtphile-55dlfsvaeq-uc.a.run.app/api/graphql
         - name: GQL_HOST
           value: https://supanuxtphile-55dlfsvaeq-uc.a.run.app/api/graphql
+
+        - name: GRAPHQL_SCHEMAS
+          value: todo,todo_api,app,app_api,msg,msg_api,inc,inc_api,loc,loc_api
+        - name: NUXT_GRAPHQL_SCHEMAS
+          value: todo,todo_api,app,app_api,msg,msg_api,inc,inc_api,loc,loc_api
       serviceAccountName: 757032130520-compute@developer.gserviceaccount.com
       timeoutSeconds: 300
   traffic:

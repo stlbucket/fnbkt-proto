@@ -7,7 +7,6 @@ const signInWithOtp = async () => {
     email: email.value,
     options: {
       emailRedirectTo: `${window.origin}/authenticated`,
-      // emailRedirectTo: 'http://localhost:3025/authenticated',
     }
   })
   if (error) console.log(error)

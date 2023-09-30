@@ -44,6 +44,7 @@
     ]
     .filter(c => c.key !== 'displayName' || props.showDisplayName )
     .filter(c => c.key !== 'email'  || props.showEmail)
+    .filter(c => c.key !== 'action'  || props.rowActionName)
   })
 
 </script>

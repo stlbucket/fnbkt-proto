@@ -21,6 +21,7 @@ export default defineEventHandler(async (event) => {
       const client = await serverSupabaseClient(event)
       const session = (await client.auth.getSession()).data.session
 
+      // console.log('session', session)
       // the session will be used later by graphql
       event.context.session = session || 'INVALID SESSION'  
     }

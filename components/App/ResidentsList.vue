@@ -10,8 +10,8 @@
       <NuxtLink :to="`/admin/app-tenant-residencies/${row.id}`">{{ row.email }}</NuxtLink>
     </template>
     <template #action-data="{ row }">
-        <UButton v-if="rowActionName" @click="handleRowAction(row)">{{rowActionName}}</UButton>
-      </template>
+      <UButton v-if="rowActionName" @click="handleRowAction(row)">{{rowActionName}}</UButton>
+    </template>
   </UTable>
 </template>
 
@@ -43,6 +43,7 @@
     ]
     .filter(c => c.key !== 'displayName' || props.showDisplayName )
     .filter(c => c.key !== 'email'  || props.showEmail)
+    .filter(c => c.key !== 'action'  || props.rowActionName)
   })
 
 </script>

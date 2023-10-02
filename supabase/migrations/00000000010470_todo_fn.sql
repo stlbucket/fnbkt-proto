@@ -480,11 +480,51 @@ CREATE OR REPLACE FUNCTION todo_fn.assign_todo(_todo_id uuid, _resident_id uuid)
       and (_options.todo_type is null or t.type = _options.todo_type)
       and (_options.todo_status is null or t.status = _options.todo_status)
       and (coalesce(_options.roots_only, false) = false or t.parent_todo_id is null )
+      and (coalesce(_options.is_template, false) =  t.is_template)
       ;
     end;
     $$;
 
 ---------------------------------------------- deep_copy_todo
+CREATE OR REPLACE FUNCTION todo_api.make_template_from_todo(_todo_id uuid)
+  RETURNS todo.todo
+  LANGUAGE plpgsql
+  VOLATILE
+  SECURITY INVOKER
+  AS $$
+  DECLARE
+    _todo todo.todo;
+  BEGIN
+    _todo := todo_fn.deep_copy_todo(
+      auth_ext.resident_id()
+      ,_todo_id
+      ,true
+    );
+
+    return _todo;
+  end;
+  $$;
+
+CREATE OR REPLACE FUNCTION todo_api.make_todo_from_template(_todo_id uuid)
+  RETURNS todo.todo
+  LANGUAGE plpgsql
+  VOLATILE
+  SECURITY INVOKER
+  AS $$
+  DECLARE
+    _todo todo.todo;
+  BEGIN
+    _todo := todo_fn.deep_copy_todo(
+      auth_ext.resident_id()
+      ,_todo_id
+      ,false
+    );
+
+    return _todo;
+  end;
+  $$;
+
+
 CREATE OR REPLACE FUNCTION todo_fn.deep_copy_todo(
     _resident_id uuid
     ,_todo_id uuid
@@ -508,9 +548,9 @@ CREATE OR REPLACE FUNCTION todo_fn.deep_copy_todo(
     end if;
 
     _copy := todo_fn.create_todo(
-      _resident_id
-      ,_todo.name
-      ,row(
+      _resident_id => _resident_id
+      ,_name => _todo.name
+      ,_options => row(
         _todo.description
         ,_parent_todo_id
         ,'{}'::citext[]

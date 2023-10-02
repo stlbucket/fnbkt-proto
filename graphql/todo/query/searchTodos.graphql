@@ -2,12 +2,14 @@ query SearchTodos(
   $searchTerm: String
   $todoType: TodoType
   $rootsOnly: Boolean
+  $isTemplate: Boolean
 ) {
    searchTodos (
     _options: {
       searchTerm: $searchTerm
       todoType: $todoType
       rootsOnly: $rootsOnly
+      isTemplate: $isTemplate
   	}
   ){
     nodes {

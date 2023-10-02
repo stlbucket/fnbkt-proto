@@ -70,17 +70,17 @@
   }
 
   const onMakeTemplate = async () => {
-    // const result = await GqlTemplatizeIncident({
-    //   incidentId: incident.value.id
-    // })
-    // navigateTo(`/incidents/${result.templatizeIncident.incident.id}`)
+    const result = await GqlMakeTemplateFromTodo({
+      todoId: todoTree.value.id
+    })
+    navigateTo(`/tools/todo/${result.makeTemplateFromTodo.todo.id}`)
   }
 
   const onCloneTemplate = async () => {
-    // const result = await GqlCloneIncidentTemplate({
-    //   incidentId: incident.value.id
-    // })
-    // navigateTo(`/incidents/${result.cloneIncidentTemplate.incident.id}`)
+    const result = await GqlMakeTodoFromTemplate({
+      todoId: todoTree.value.id
+    })
+    navigateTo(`/tools/todo/${result.makeTodoFromTemplate.todo.id}`)
   }
 
   const onDelete = async(todoId: string) => {

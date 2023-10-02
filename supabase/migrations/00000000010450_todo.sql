@@ -21,6 +21,7 @@ create type todo_fn.search_todos_options as (
   ,todo_type todo.todo_type
   ,todo_status todo.todo_status
   ,roots_only boolean
+  ,is_template boolean
   ,paging_options app_fn.paging_options
 );
 ------------------------------------------------------------------------ todo_tenant

@@ -1,7 +1,11 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "engines": {
+    "node": "18.x"   
+  },
   "scripts": {
+    "start": "node .output/server/index.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
